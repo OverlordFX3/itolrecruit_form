@@ -122,12 +122,9 @@
         <input type="text" name="lastName">
       </label>
       <label>
-        Order ID:
-        <input type="text" name="orderId" required>
-      </label>
-      <label>
         Requester Desk:
         <select name="requesterId" required>
+          <option value="" disabled selected>-- Select Desk --</option>
           <option value="desk-1">Desk 1</option>
           <option value="desk-2">Desk 2</option>
           <option value="desk-3">Desk 3</option>
@@ -141,7 +138,15 @@
         </select>
       </label>
       <label>
-        Creation Time:
+        Campaign:
+        <select name="campaignId" required>
+          <option value="" disabled selected>-- Select Campaign --</option>
+          <option value="campaign-1">Campaign 1</option>
+          <option value="campaign-2">Campaign 2</option>
+        </select>
+      </label>
+      <label>
+        Request Time:
         <input type="datetime-local" name="createdAt" id="createdAtInput" required>
       </label>
       <button type="submit">Add</button>
@@ -160,11 +165,13 @@
       e.preventDefault();
       
       const createdAtISO = new Date(e.target.createdAt.value).toISOString();
+      const deskId = e.target.requesterId.value;
+      const generatedOrderId = Date.now() + "-" + deskId;
 
       const data = {
-        orderId: e.target.orderId.value,
+        orderId: generatedOrderId,
         channel: "form",
-        event: "signup",
+        event: "manual-review-request",
         orderLines: [
           {
             productSku: "1210",
@@ -179,8 +186,9 @@
           mobile: ""
         },
         requester: {
-          id: e.target.requesterId.value,
-          name: ""
+          id: deskId,
+          name: "",
+          campaign: e.target.campaignId.value
         },
         websiteDomain: "itolrecruit.com",
         promotion: [
