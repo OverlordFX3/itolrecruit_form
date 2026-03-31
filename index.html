@@ -220,14 +220,14 @@
         requester: {
           id: deskId,
           name: requesterName,
-          campaign: ""
+          campaign: "" // По схеме должна быть строка
         },
         websiteDomain: "itolrecruit.com",
         promotion: [
           {
             code: "",
             name: "",
-            campaign: parseInt(e.target.campaignId.value),
+            campaign: e.target.campaignId.value, // Убрал parseInt, теперь передается строка, как того требует схема
             campaignType: "",
             discountType: "",
             customerType: "",
