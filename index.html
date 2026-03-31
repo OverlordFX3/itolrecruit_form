@@ -121,30 +121,24 @@
         Last name:
         <input type="text" name="lastName">
       </label>
+      
       <label>
         Requester Desk:
         <select name="requesterId" required>
           <option value="" disabled selected>-- Select Desk --</option>
-          <option value="desk-1">Desk 1</option>
-          <option value="desk-2">Desk 2</option>
-          <option value="desk-3">Desk 3</option>
-          <option value="desk-4">Desk 4</option>
-          <option value="desk-5">Desk 5</option>
-          <option value="desk-6">Desk 6</option>
-          <option value="desk-7">Desk 7</option>
-          <option value="desk-8">Desk 8</option>
-          <option value="desk-9">Desk 9</option>
-          <option value="desk-10">Desk 10</option>
-        </select>
+          <option value="1" data-name="Exam Administrator">1-Exam Administrator</option>
+          <option value="2" data-name="Support Agent">2-Support Agent</option>
+          <option value="3" data-name="Manager">3-Manager</option>
+          </select>
       </label>
+
       <label>
         Campaign:
-        <select name="campaignId" required>
-          <option value="" disabled selected>-- Select Campaign --</option>
-          <option value="campaign-1">Campaign 1</option>
-          <option value="campaign-2">Campaign 2</option>
+        <select name="campaignId" id="campaignId" required>
+          <option value="" disabled selected>-- Loading Campaigns... --</option>
         </select>
       </label>
+
       <label>
         Request Time:
         <input type="datetime-local" name="createdAt" id="createdAtInput" required>
@@ -159,13 +153,39 @@
       const now = new Date();
       now.setMinutes(now.getMinutes() - now.getTimezoneOffset());
       document.getElementById('createdAtInput').value = now.toISOString().slice(0, 16);
+
+      fetch('https://services.stacktome.com/api/invites/v1/campaigns?apikey=PUcX52Si6rjuReuOfFMKrPue0FXcFfHB', {
+        headers: {
+          'accept': 'application/json'
+        }
+      })
+      .then(response => response.json())
+      .then(data => {
+        const campaignSelect = document.getElementById('campaignId');
+        campaignSelect.innerHTML = '<option value="" disabled selected>-- Select Campaign --</option>';
+        
+        data.forEach(campaign => {
+          const option = document.createElement('option');
+          option.value = campaign.id; 
+          option.textContent = campaign.name; 
+          campaignSelect.appendChild(option);
+        });
+      })
+      .catch(error => {
+        console.error('Error fetching campaigns:', error);
+        document.getElementById('campaignId').innerHTML = '<option value="" disabled selected>-- Error loading campaigns --</option>';
+      });
     });
 
     document.getElementById('orderForm').onsubmit = async function(e) {
       e.preventDefault();
       
       const createdAtISO = new Date(e.target.createdAt.value).toISOString();
-      const deskId = e.target.requesterId.value;
+      
+      const requesterSelect = e.target.requesterId;
+      const deskId = requesterSelect.value; 
+      const requesterName = requesterSelect.options[requesterSelect.selectedIndex].getAttribute('data-name');
+      
       const generatedOrderId = Date.now() + "-" + deskId;
 
       const data = {
@@ -187,8 +207,8 @@
         },
         requester: {
           id: deskId,
-          name: "",
-          campaign: e.target.campaignId.value
+          name: requesterName, 
+          campaign: parseInt(e.target.campaignId.value) 
         },
         websiteDomain: "itolrecruit.com",
         promotion: [
