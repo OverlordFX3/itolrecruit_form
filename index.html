@@ -195,11 +195,9 @@
       e.preventDefault();
       
       const createdAtISO = new Date(e.target.createdAt.value).toISOString();
-      
       const requesterSelect = e.target.requesterId;
       const deskId = requesterSelect.value; 
       const requesterName = requesterSelect.options[requesterSelect.selectedIndex].getAttribute('data-name');
-      
       const generatedOrderId = Date.now() + "-" + deskId;
 
       const data = {
@@ -222,14 +220,14 @@
         requester: {
           id: deskId,
           name: requesterName,
-          campaign: parseInt(e.target.campaignId.value)
+          campaign: ""
         },
         websiteDomain: "itolrecruit.com",
         promotion: [
           {
             code: "",
             name: "",
-            campaign: "",
+            campaign: parseInt(e.target.campaignId.value),
             campaignType: "",
             discountType: "",
             customerType: "",
