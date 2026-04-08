@@ -1,282 +1,282 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Order Upload</title>
-  <style>
-    body {
-      background: #f6f7fb;
-      font-family: 'Segoe UI', Arial, sans-serif;
-      display: flex;
-      justify-content: center;
-      align-items: flex-start;
-      min-height: 100vh;
-      margin: 0;
-      padding: 0;
-    }
-    .container {
-      background: #fff;
-      border-radius: 10px;
-      box-shadow: 0 4px 24px rgba(0,0,0,0.08);
-      padding: 32px 32px 24px 32px;
-      margin-top: 40px;
-      width: 100%;
-      max-width: 400px;
-    }
-    h2 {
-      margin-top: 0;
-      font-weight: 500;
-      color: #354052;
-      letter-spacing: 0.02em;
-      text-align: center;
-      margin-bottom: 24px;
-    }
-    form label {
-      display: flex;
-      flex-direction: column;
-      font-size: 1rem;
-      font-weight: 500;
-      color: #495057;
-      margin-bottom: 18px;
-      letter-spacing: 0.01em;
-    }
-    form input[type="text"],
-    form input[type="email"],
-    form input[type="datetime-local"],
-    form select {
-      margin-top: 6px;
-      padding: 10px 12px;
-      font-size: 1rem;
-      border: 1.3px solid #ccd0d5;
-      border-radius: 6px;
-      transition: border-color 0.2s;
-      outline: none;
-      background: #fafbfc;
-      color: #2b2e32;
-      font-family: inherit;
-    }
-    form input:focus,
-    form select:focus {
-      border-color: #368ade;
-      background: #fff;
-      box-shadow: 0 0 2px #368ade25;
-    }
-    button[type="submit"] {
-      width: 100%;
-      background: linear-gradient(90deg, #3f8efc 60%, #2762c8 100%);
-      color: #fff;
-      font-size: 1.09rem;
-      font-weight: bold;
-      margin-top: 4px;
-      padding: 12px 0 10px 0;
-      border: none;
-      border-radius: 6px;
-      cursor: pointer;
-      box-shadow: 0 2px 8px #368ade22;
-      letter-spacing: 0.03em;
-      transition: background 0.16s, box-shadow 0.16s, transform 0.13s;
-    }
-    button[type="submit"]:hover {
-      background: linear-gradient(90deg, #2762c8 20%, #3f8efc 100%);
-      box-shadow: 0 4px 14px #368ade44;
-      transform: translateY(-1px) scale(1.01);
-    }
-    .msg-success {
-      border: 1.5px solid #27ae60;
-      background: #e9fbe8;
-      color: #1d8244;
-      border-radius: 5px;
-      padding: 15px 10px;
-      margin-top: 28px;
-      font-weight: 600;
-      word-break: break-all;
-      text-align: center;
-    }
-    .msg-error {
-      border: 1.5px solid #e74c3c;
-      background: #fff0ef;
-      color: #d20d16;
-      border-radius: 5px;
-      padding: 15px 10px;
-      margin-top: 28px;
-      font-weight: 600;
-      word-break: break-all;
-      text-align: center;
-    }
-  </style>
+  <meta charset="UTF-8">
+  <title>Order Upload</title>
+  <style>
+    body {
+      background: #f6f7fb;
+      font-family: 'Segoe UI', Arial, sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      min-height: 100vh;
+      margin: 0;
+      padding: 0;
+    }
+    .container {
+      background: #fff;
+      border-radius: 10px;
+      box-shadow: 0 4px 24px rgba(0,0,0,0.08);
+      padding: 32px 32px 24px 32px;
+      margin-top: 40px;
+      width: 100%;
+      max-width: 400px;
+    }
+    h2 {
+      margin-top: 0;
+      font-weight: 500;
+      color: #354052;
+      letter-spacing: 0.02em;
+      text-align: center;
+      margin-bottom: 24px;
+    }
+    form label {
+      display: flex;
+      flex-direction: column;
+      font-size: 1rem;
+      font-weight: 500;
+      color: #495057;
+      margin-bottom: 18px;
+      letter-spacing: 0.01em;
+    }
+    form input[type="text"],
+    form input[type="email"],
+    form input[type="datetime-local"],
+    form select {
+      margin-top: 6px;
+      padding: 10px 12px;
+      font-size: 1rem;
+      border: 1.3px solid #ccd0d5;
+      border-radius: 6px;
+      transition: border-color 0.2s;
+      outline: none;
+      background: #fafbfc;
+      color: #2b2e32;
+      font-family: inherit;
+    }
+    form input:focus,
+    form select:focus {
+      border-color: #368ade;
+      background: #fff;
+      box-shadow: 0 0 2px #368ade25;
+    }
+    button[type="submit"] {
+      width: 100%;
+      background: linear-gradient(90deg, #3f8efc 60%, #2762c8 100%);
+      color: #fff;
+      font-size: 1.09rem;
+      font-weight: bold;
+      margin-top: 4px;
+      padding: 12px 0 10px 0;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      box-shadow: 0 2px 8px #368ade22;
+      letter-spacing: 0.03em;
+      transition: background 0.16s, box-shadow 0.16s, transform 0.13s;
+    }
+    button[type="submit"]:hover {
+      background: linear-gradient(90deg, #2762c8 20%, #3f8efc 100%);
+      box-shadow: 0 4px 14px #368ade44;
+      transform: translateY(-1px) scale(1.01);
+    }
+    .msg-success {
+      border: 1.5px solid #27ae60;
+      background: #e9fbe8;
+      color: #1d8244;
+      border-radius: 5px;
+      padding: 15px 10px;
+      margin-top: 28px;
+      font-weight: 600;
+      word-break: break-all;
+      text-align: center;
+    }
+    .msg-error {
+      border: 1.5px solid #e74c3c;
+      background: #fff0ef;
+      color: #d20d16;
+      border-radius: 5px;
+      padding: 15px 10px;
+      margin-top: 28px;
+      font-weight: 600;
+      word-break: break-all;
+      text-align: center;
+    }
+  </style>
 </head>
 <body>
-  <div class="container">
-    <h2>Create Review Request</h2>
-    <form id="orderForm" autocomplete="off">
-      <label>
-        Email:
-        <input type="email" name="email" required>
-      </label>
-      <label>
-        First name:
-        <input type="text" name="firstName" required>
-      </label>
-      <label>
-        Last name:
-        <input type="text" name="lastName">
-      </label>
-      
-      <label>
-  Requester Desk:
-  <select name="requesterId" required>
-    <option value="" disabled selected>-- Select Desk --</option>
-    <option value="1-Exam-Administrator" data-name="Barbara">Barbara-1-Exam Administrator</option>
-    <option value="2-CIPD/CMI" data-name="Courtney">Courtney-2-CIPD/CMI</option>
-    <option value="3-PM-Tutor" data-name="Debbie">Debbie-3-PM Tutor</option>
-    <option value="4-Coding/AI-Tutor" data-name="Emmanuel">Emmanuel-4-Coding/AI-Tutor</option>
-    <option value="5-IT-Tutor" data-name="Jerry">Jerry-5-IT Tutor</option>
-    <option value="6-Coding-Tutor" data-name="Jordan">Jordan-6-Coding Tutor</option>
-    <option value="7-IT-Tutor" data-name="Kosi">Kosi-7-IT Tutor</option>
-    <option value="8-Welcome-Calls" data-name="Lisa">Lisa-8-Welcome Calls</option>
-    <option value="9-Set-ups" data-name="Maggie">Maggie-9-Set ups</option>
-    <option value="10-Data-Tutor" data-name="Neville">Neville-10-Data Tutor</option>
-    <option value="11-CMI/CIPD" data-name="Oni">Oni-11-CMI/CIPD</option>
-    <option value="12-CIPD/CMI" data-name="Pearl">Pearl-12-CIPD/CMI</option>
-    <option value="13-Data-Tutor" data-name="Roma">Roma-13-Data Tutor</option>
-    <option value="14-PM-Tutor" data-name="Ryan">Ryan-14-PM Tutor</option>
-    <option value="15-PM-Tutor" data-name="Steven">Steven-15-PM Tutor</option>
-    <option value="16-Exam-Administrator" data-name="Yvonne">Yvonne-16-Exam Administrator</option>
-    <option value="17-BA-Tutor" data-name="Zimasa">Zimasa-17-BA Tutor</option>
-  </select>
+  <div class="container">
+    <h2>Create Review Request</h2>
+    <form id="orderForm" autocomplete="off">
+      <label>
+        Email:
+        <input type="email" name="email" required>
+      </label>
+      <label>
+        First name:
+        <input type="text" name="firstName" required>
+      </label>
+      <label>
+        Last name:
+        <input type="text" name="lastName">
+      </label>
+      
+      <label>
+  Requester Desk:
+  <select name="requesterId" required>
+    <option value="" disabled selected>-- Select Desk --</option>
+    <option value="1-Exam-Administrator" data-name="Barbara">Barbara-1-Exam Administrator</option>
+    <option value="2-CIPD/CMI" data-name="Courtney">Courtney-2-CIPD/CMI</option>
+    <option value="3-PM-Tutor" data-name="Debbie">Debbie-3-PM Tutor</option>
+    <option value="4-Coding/AI-Tutor" data-name="Emmanuel">Emmanuel-4-Coding/AI Tutor</option>
+    <option value="5-IT-Tutor" data-name="Jerry">Jerry-5-IT Tutor</option>
+    <option value="6-Coding-Tutor" data-name="Jordan">Jordan-6-Coding Tutor</option>
+    <option value="7-IT-Tutor" data-name="Kosi">Kosi-7-IT Tutor</option>
+    <option value="8-Welcome-Calls" data-name="Lisa">Lisa-8-Welcome Calls</option>
+    <option value="9-Set-ups" data-name="Maggie">Maggie-9-Set ups</option>
+    <option value="10-Data-Tutor" data-name="Neville">Neville-10-Data Tutor</option>
+    <option value="11-CMI/CIPD" data-name="Oni">Oni-11-CMI/CIPD</option>
+    <option value="12-CIPD/CMI" data-name="Pearl">Pearl-12-CIPD/CMI</option>
+    <option value="13-Data-Tutor" data-name="Roma">Roma-13-Data Tutor</option>
+    <option value="14-PM-Tutor" data-name="Ryan">Ryan-14-PM Tutor</option>
+    <option value="15-PM-Tutor" data-name="Steven">Steven-15-PM Tutor</option>
+    <option value="16-Exam-Administrator" data-name="Yvonne">Yvonne-16-Exam Administrator</option>
+    <option value="17-BA-Tutor" data-name="Zimasa">Zimasa-17-BA Tutor</option>
+  </select>
 </label>
 
-      <label>
-        Campaign:
-        <select name="campaignId" id="campaignId" required>
-          <option value="" disabled selected>-- Loading Campaigns... --</option>
-        </select>
-      </label>
+      <label>
+        Campaign:
+        <select name="campaignId" id="campaignId" required>
+          <option value="" disabled selected>-- Loading Campaigns... --</option>
+        </select>
+      </label>
 
-      <label>
-        Request Time:
-        <input type="datetime-local" name="createdAt" id="createdAtInput" required>
-      </label>
-      <button type="submit">Add</button>
-    </form>
-    <div id="result"></div>
-  </div>
+      <label>
+        Request Time:
+        <input type="datetime-local" name="createdAt" id="createdAtInput" required>
+      </label>
+      <button type="submit">Add</button>
+    </form>
+    <div id="result"></div>
+  </div>
 
-  <script>
-    window.addEventListener('DOMContentLoaded', () => {
-      const now = new Date();
-      now.setMinutes(now.getMinutes() - now.getTimezoneOffset());
-      document.getElementById('createdAtInput').value = now.toISOString().slice(0, 16);
+  <script>
+    window.addEventListener('DOMContentLoaded', () => {
+      const now = new Date();
+      now.setMinutes(now.getMinutes() - now.getTimezoneOffset());
+      document.getElementById('createdAtInput').value = now.toISOString().slice(0, 16);
 
-      fetch('https://services.stacktome.com/api/invites/v1/campaigns?apikey=PUcX52Si6rjuReuOfFMKrPue0FXcFfHB', {
-        headers: {
-          'accept': 'application/json'
-        }
-      })
-      .then(response => response.json())
-      .then(data => {
-        const campaignSelect = document.getElementById('campaignId');
-        campaignSelect.innerHTML = '<option value="" disabled selected>-- Select Campaign --</option>';
-        
-        data.forEach(campaign => {
-          const option = document.createElement('option');
-          option.value = campaign.id;
-          option.textContent = campaign.name;
-          campaignSelect.appendChild(option);
-        });
-      })
-      .catch(error => {
-        document.getElementById('campaignId').innerHTML = '<option value="" disabled selected>-- Error loading campaigns --</option>';
-      });
-    });
+      fetch('https://services.stacktome.com/api/invites/v1/campaigns?apikey=PUcX52Si6rjuReuOfFMKrPue0FXcFfHB', {
+        headers: {
+          'accept': 'application/json'
+        }
+      })
+      .then(response => response.json())
+      .then(data => {
+        const campaignSelect = document.getElementById('campaignId');
+        campaignSelect.innerHTML = '<option value="" disabled selected>-- Select Campaign --</option>';
+        
+        data.forEach(campaign => {
+          const option = document.createElement('option');
+          option.value = campaign.id;
+          option.textContent = campaign.name;
+          campaignSelect.appendChild(option);
+        });
+      })
+      .catch(error => {
+        document.getElementById('campaignId').innerHTML = '<option value="" disabled selected>-- Error loading campaigns --</option>';
+      });
+    });
 
-    document.getElementById('orderForm').onsubmit = async function(e) {
-      e.preventDefault();
-      
-      const createdAtISO = new Date(e.target.createdAt.value).toISOString();
-      const requesterSelect = e.target.requesterId;
-      const deskId = requesterSelect.value; 
-      const requesterName = requesterSelect.options[requesterSelect.selectedIndex].getAttribute('data-name');
-      const generatedOrderId = Date.now() + "-" + deskId;
+    document.getElementById('orderForm').onsubmit = async function(e) {
+      e.preventDefault();
+      
+      const createdAtISO = new Date(e.target.createdAt.value).toISOString();
+      const requesterSelect = e.target.requesterId;
+      const deskId = requesterSelect.value; 
+      const requesterName = requesterSelect.options[requesterSelect.selectedIndex].getAttribute('data-name');
+      const generatedOrderId = Date.now() + "-" + deskId;
 
-      const data = {
-        orderId: generatedOrderId,
-        channel: "form",
-        event: "manual-review-request",
-        orderLines: [
-          {
-            productSku: "1210",
-            name: "Project Management",
-            productType: "online-courses"
-          }
-        ],
-        customer: {
-          firstName: e.target.firstName.value,
-          lastName: e.target.lastName.value,
-          email: e.target.email.value,
-          mobile: ""
-        },
-        requester: {
-          id: deskId,
-          name: requesterName,
-          campaign: ""
-        },
-        websiteDomain: "itolrecruit.com",
-        promotion: [
-          {
-            code: "",
-            name: "",
-            campaign: e.target.campaignId.value,
-            campaignType: "",
-            discountType: "",
-            customerType: "",
-            medium: "email",
-            source: ""
-          }
-        ],
-        createdAt: createdAtISO
-      };
+      const data = {
+        orderId: generatedOrderId,
+        channel: "form",
+        event: "manual-review-request",
+        orderLines: [
+          {
+            productSku: "1210",
+            name: "Project Management",
+            productType: "online-courses"
+          }
+        ],
+        customer: {
+          firstName: e.target.firstName.value,
+          lastName: e.target.lastName.value,
+          email: e.target.email.value,
+          mobile: ""
+        },
+        requester: {
+          id: deskId,
+          name: requesterName,
+          campaign: ""
+        },
+        websiteDomain: "itolrecruit.com",
+        promotion: [
+          {
+            code: "",
+            name: "",
+            campaign: e.target.campaignId.value,
+            campaignType: "",
+            discountType: "",
+            customerType: "",
+            medium: "email",
+            source: ""
+          }
+        ],
+        createdAt: createdAtISO
+      };
 
-      const apiurl = 'https://services.stacktome.com/api/events/v1/sales?apikey=1zpyK7gfUtWN2wVVxMqDl1kVNzuL4cF1';
-      let msg, cls;
+      const apiurl = 'https://services.stacktome.com/api/events/v1/sales?apikey=1zpyK7gfUtWN2wVVxMqDl1kVNzuL4cF1';
+      let msg, cls;
 
-      try {
-        const response = await fetch(apiurl, {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify([data])
-        });
+      try {
+        const response = await fetch(apiurl, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify([data])
+        });
 
-        let txt = await response.text();
+        let txt = await response.text();
 
-        try {
-          const parsed = JSON.parse(txt);
-          if (parsed.success || response.ok) {
-            msg = "✅ Success!";
-            cls = "msg-success";
-          } else {
-            msg = "❌ Error: " + (parsed.failure || response.statusText);
-            if (parsed.errors) msg += "<br>" + parsed.errors;
-            cls = "msg-error";
-          }
-        } catch {
-          if (response.ok) {
-            msg = "✅ Success!";
-            cls = "msg-success";
-          } else {
-            msg = "❌ Error: " + response.statusText + "<br>" + txt;
-            cls = "msg-error";
-          }
-        }
-      } catch (err) {
-        msg = "❌ Error: " + err;
-        cls = "msg-error";
-      }
+        try {
+          const parsed = JSON.parse(txt);
+          if (parsed.success || response.ok) {
+            msg = "✅ Success!";
+            cls = "msg-success";
+          } else {
+            msg = "❌ Error: " + (parsed.failure || response.statusText);
+            if (parsed.errors) msg += "<br>" + parsed.errors;
+            cls = "msg-error";
+          }
+        } catch {
+          if (response.ok) {
+            msg = "✅ Success!";
+            cls = "msg-success";
+          } else {
+            msg = "❌ Error: " + response.statusText + "<br>" + txt;
+            cls = "msg-error";
+          }
+        }
+      } catch (err) {
+        msg = "❌ Error: " + err;
+        cls = "msg-error";
+      }
 
-      const res = document.getElementById('result');
-      res.innerHTML = msg;
-      res.className = cls;
-    };
-  </script>
+      const res = document.getElementById('result');
+      res.innerHTML = msg;
+      res.className = cls;
+    };
+  </script>
 </body>
 </html>
